@@ -16,6 +16,14 @@ public class VersionUtils {
         return Build.VERSION.SDK_INT;
     }
 
+    //是否大于4.3
+    public static boolean isJELLY_BEAN_MR1() {
+        if (getVersion() >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+            return true;
+        }
+        return false;
+    }
+
     //是否大于5.0
     public static boolean isLollipop() {
         if (getVersion() >= Build.VERSION_CODES.LOLLIPOP) {
