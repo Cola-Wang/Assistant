@@ -7,7 +7,6 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -15,6 +14,8 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.miki.projecttest.base.BasePermissionActivity;
+import com.miki.projecttest.listener.OnRequestPermissionListener;
 import com.tbruyelle.rxpermissions2.RxPermissions;
 
 import io.reactivex.Observer;
@@ -24,11 +25,11 @@ import io.reactivex.disposables.Disposable;
  * 工程测试用例
  */
 
-public class MainActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
+public class MainActivity extends BasePermissionActivity implements AdapterView.OnItemClickListener {
 
     public static final String TAG = "wangzh";
 
-    private String[] mStr = {"请求权限","RxPermissions"};
+    private String[] mStr = {"请求权限","RxPermissions","动态权限封装"};
     private ArrayAdapter<String> mArrayAdapter;
     private ListView mListView;
 
@@ -66,6 +67,26 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                 break;
             case 1:
                 RxPermiss();
+                break;
+            case 2:
+                checkPermissions(new String[]{Manifest.permission.CALL_PHONE, Manifest.permission.CAMERA}, 200, new OnRequestPermissionListener() {
+                    @Override
+                    public void onSuccessful(int[] grantResults) {
+                        for (int i = 0; i < grantResults.length; i++) {
+                            Log.d(TAG, "onSuccessful: " + grantResults[i]);
+                        }
+                    }
+
+                    @Override
+                    public void onFailure() {
+
+                    }
+
+                    @Override
+                    public void onNullPermission() {
+
+                    }
+                });
                 break;
         }
     }
@@ -128,18 +149,18 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         }
     }
 
-    @Override
-    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
-        Log.i("test", "permissions:" + permissions.length + "grantResults:" + grantResults.length);
-
-        if (requestCode == 100) {
-            if (grantResults.length > 0) {
-                if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    callPhone("10086");
-                } else {
-                    Toast.makeText(this, "你拒绝了权限", Toast.LENGTH_SHORT).show();
-                }
-            }
-        }
-    }
+//    @Override
+//    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+//        Log.i("test", "permissions:" + permissions.length + "grantResults:" + grantResults.length);
+//
+//        if (requestCode == 100) {
+//            if (grantResults.length > 0) {
+//                if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+//                    callPhone("10086");
+//                } else {
+//                    Toast.makeText(this, "你拒绝了权限", Toast.LENGTH_SHORT).show();
+//                }
+//            }
+//        }
+//    }
 }
