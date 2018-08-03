@@ -1,9 +1,8 @@
 package com.miki.assistant.base;
 
+import android.app.Activity;
 import android.content.pm.PackageManager;
 import android.support.v4.app.ActivityCompat;
-import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 
 import com.miki.assistant.listener.OnRequestPermissionListener;
 
@@ -18,7 +17,7 @@ import java.util.List;
  * 描述:      权限封装
  */
 
-public class BasePermissionActivity extends AppCompatActivity {
+public class BasePermissionActivity extends Activity {
 
     /**
      * 1.请求权限
@@ -77,6 +76,8 @@ public class BasePermissionActivity extends AppCompatActivity {
             int size = mListPermissions.size();
             ActivityCompat.requestPermissions(this, mListPermissions.toArray(new String[size]), permissionsRequestCode);
             mListPermissions.clear();
+        } else {
+            listener.onNullPermission();
         }
     }
 }

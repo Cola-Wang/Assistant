@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.miki.assistant">
 
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+
     <application
         android:name=".base.BaseApplication"
         android:allowBackup="true"
@@ -10,13 +12,24 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+
+        <!--闪屏页-->
+        <activity
+            android:name=".ui.IndexActivity"
+            android:theme="@android:style/Theme.Light.NoTitleBar.Fullscreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!--主页-->
+        <activity android:name=".MainActivity" />
+        <!--引导页-->
+        <activity
+            android:name=".ui.GuideActivity"
+            android:theme="@android:style/Theme.Light.NoTitleBar.Fullscreen" />
     </application>
 
 </manifest>
