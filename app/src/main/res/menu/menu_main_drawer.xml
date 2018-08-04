@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:checked="true"
+            android:id="@+id/nav_menu_home"
+            android:icon="@mipmap/ic_launcher"
+            android:title="主页" />
+        <item
+            android:id="@+id/nav_menu_wallpaper"
+            android:icon="@mipmap/ic_launcher"
+            android:title="壁纸" />
+        <item
+            android:id="@+id/nav_menu_app"
+            android:icon="@mipmap/ic_launcher"
+            android:title="应用" />
+        <item
+            android:id="@+id/nav_menu_system"
+            android:icon="@mipmap/ic_launcher"
+            android:title="系统" />
+        <item
+            android:id="@+id/nav_menu_time"
+            android:icon="@mipmap/ic_launcher"
+            android:title="时光" />
+    </group>
+
+    <item android:title="附加">
+
+        <menu>
+            <item
+                android:id="@+id/nav_menu_share"
+                android:icon="@mipmap/ic_launcher"
+                android:title="分享" />
+            <item
+                android:id="@+id/nav_menu_setting"
+                android:icon="@mipmap/ic_launcher"
+                android:title="设置" />
+
+        </menu>
+    </item>
+</menu>
