@@ -11,4 +11,6 @@ package com.miki.assistant.entity;
 public class Constant {
     //进入判断页
     public static final int HANDLER_TO_MAIN = 1000;
+    //精选的网页
+    public static final String HTTP_SELECT_URL = "http://v3.wufazhuce.com:8000/api/hp/more/0";
 }
