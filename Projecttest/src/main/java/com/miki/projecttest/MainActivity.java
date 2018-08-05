@@ -1,25 +1,15 @@
 package com.miki.projecttest;
 
-import android.Manifest;
 import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.net.Uri;
 import android.os.Bundle;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.miki.projecttest.base.BasePermissionActivity;
-import com.miki.projecttest.listener.OnRequestPermissionListener;
-import com.tbruyelle.rxpermissions2.RxPermissions;
-
-import io.reactivex.Observer;
-import io.reactivex.disposables.Disposable;
+import com.miki.projecttest.ui.FragmentTestActivity;
+import com.miki.projecttest.ui.PermissionActivity;
 
 /**
  * 工程测试用例
@@ -29,20 +19,9 @@ public class MainActivity extends BasePermissionActivity implements AdapterView.
 
     public static final String TAG = "wangzh";
 
-    private String[] mStr = {"请求权限","RxPermissions","动态权限封装"};
+    private String[] mStr = {"运行时权限", "Fragment"};
     private ArrayAdapter<String> mArrayAdapter;
     private ListView mListView;
-
-    /**
-     * 1. 动态权限
-     * <p>
-     * 确定权限
-     * 判断权限
-     * 申请权限
-     * 处理权限
-     *
-     * @param savedInstanceState
-     */
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,104 +42,11 @@ public class MainActivity extends BasePermissionActivity implements AdapterView.
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         switch (position) {
             case 0:
-                requestPermissions();
+                startActivity(new Intent(this, PermissionActivity.class));
                 break;
             case 1:
-                RxPermiss();
-                break;
-            case 2:
-                checkPermissions(new String[]{Manifest.permission.CALL_PHONE, Manifest.permission.CAMERA}, 200, new OnRequestPermissionListener() {
-                    @Override
-                    public void onSuccessful(int[] grantResults) {
-                        for (int i = 0; i < grantResults.length; i++) {
-                            Log.d(TAG, "onSuccessful: " + grantResults[i]);
-                        }
-                    }
-
-                    @Override
-                    public void onFailure() {
-
-                    }
-
-                    @Override
-                    public void onNullPermission() {
-
-                    }
-                });
+                startActivity(new Intent(this, FragmentTestActivity.class));
                 break;
         }
     }
-
-    //打电话
-    private void callPhone(String phone) {
-        Intent intent = new Intent();
-        intent.setAction(Intent.ACTION_CALL);
-        intent.addCategory(Intent.CATEGORY_DEFAULT);
-        intent.setData(Uri.parse("tel:" + phone));
-        startActivity(intent);
-    }
-
-    //RxPermissions
-    private void RxPermiss(){
-        RxPermissions rxPermissions = new RxPermissions(this);
-        //请求权限
-        rxPermissions.request(Manifest.permission.CALL_PHONE
-                ,Manifest.permission.CAMERA)
-                .subscribe(new Observer<Boolean>() {
-                    @Override
-                    public void onSubscribe(Disposable d) {
-
-                    }
-
-                    @Override
-                    public void onNext(Boolean value) {
-                        Log.d(TAG,"结果：" + value);
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-
-                    }
-
-                    @Override
-                    public void onComplete() {
-
-                    }
-                });
-    }
-
-    //普通的请求权限
-    private void requestPermissions(){
-        //判断电话权限
-        if (ContextCompat.checkSelfPermission(this,
-                Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
-            //申请权限
-            //判断用户是否拒绝过该权限
-            if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.CALL_PHONE)) {
-                //说明已经拒绝过，需要解释
-                Toast.makeText(this, "已经拒绝过权限", Toast.LENGTH_LONG).show();
-                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CALL_PHONE}, 100);
-            } else {
-                //请求权限
-                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CALL_PHONE}, 100);
-            }
-        } else {
-            callPhone("10086");
-        }
-    }
-
-//    @Override
-//    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
-//        Log.i("test", "permissions:" + permissions.length + "grantResults:" + grantResults.length);
-//
-//        if (requestCode == 100) {
-//            if (grantResults.length > 0) {
-//                if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-//                    callPhone("10086");
-//                } else {
-//                    Toast.makeText(this, "你拒绝了权限", Toast.LENGTH_SHORT).show();
-//                }
-//            }
-//        }
-//    }
 }

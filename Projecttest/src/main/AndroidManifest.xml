@@ -19,6 +19,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".ui.PermissionActivity"
+            android:label="运行时权限" />
+        <activity
+            android:name=".ui.FragmentTestActivity"
+            android:label="碎片" />
     </application>
 
 </manifest>
