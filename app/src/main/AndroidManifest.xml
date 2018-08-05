@@ -33,6 +33,8 @@
         <activity
             android:name=".ui.GuideActivity"
             android:theme="@android:style/Theme.Light.NoTitleBar.Fullscreen" />
+        <!--浏览器-->
+        <activity android:name=".ui.WebViewActivity" />
     </application>
 
 </manifest>

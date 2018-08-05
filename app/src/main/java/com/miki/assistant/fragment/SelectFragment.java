@@ -1,5 +1,6 @@
 package com.miki.assistant.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
@@ -14,6 +15,7 @@ import com.miki.assistant.R;
 import com.miki.assistant.base.BasePagerAdapter;
 import com.miki.assistant.entity.Constant;
 import com.miki.assistant.model.SelectModel;
+import com.miki.assistant.ui.WebViewActivity;
 import com.miki.assistant.utils.GlideUtils;
 import com.miki.assistant.utils.LogUtils;
 import com.miki.assistant.utils.OkHttpUtils;
@@ -119,6 +121,7 @@ public class SelectFragment extends Fragment {
                 String last_update_date = jsonData.getString("last_update_date");
                 String hp_img_url = jsonData.getString("hp_img_url");
                 String web_url = jsonData.getString("web_url");
+                String text_authors = jsonData.getString("text_authors");
 
                 SelectModel model = new SelectModel();
                 model.setHp_title(hp_title);
@@ -127,6 +130,7 @@ public class SelectFragment extends Fragment {
                 model.setLast_update_date(last_update_date);
                 model.setHp_img_url(hp_img_url);
                 model.setWeb_url(web_url);
+                model.setText_authors(text_authors);
 
                 mListModel.add(model);
             }
@@ -141,12 +145,23 @@ public class SelectFragment extends Fragment {
                 TextView tv_content = (TextView) view.findViewById(R.id.tv_content);
                 TextView tv_last_update_date = (TextView) view.findViewById(R.id.tv_last_update_date);
 
-                SelectModel model = mListModel.get(i);
+                final SelectModel model = mListModel.get(i);
                 tv_title.setText(model.getHp_title());
                 tv_author.setText(model.getHp_author());
                 tv_content.setText(model.getHp_content());
                 tv_last_update_date.setText(model.getLast_update_date());
                 GlideUtils.loadImageViewCenterCrop(getActivity(), model.getHp_img_url(), iv_img);
+
+                //跳转浏览器
+                iv_img.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent intent = new Intent(getActivity(), WebViewActivity.class);
+                        intent.putExtra("title", model.getText_authors());
+                        intent.putExtra("url", model.getWeb_url());
+                        startActivity(intent);
+                    }
+                });
 
                 mListPagerView.add(view);
 

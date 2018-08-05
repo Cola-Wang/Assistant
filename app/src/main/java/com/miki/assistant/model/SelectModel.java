@@ -22,6 +22,8 @@ public class SelectModel {
     private String hp_img_url;
     //链接地址
     private String web_url;
+    //标题
+    private String text_authors;
 
     public String getHp_title() {
         return hp_title;
@@ -69,5 +71,13 @@ public class SelectModel {
 
     public void setWeb_url(String web_url) {
         this.web_url = web_url;
+    }
+
+    public String getText_authors() {
+        return text_authors;
+    }
+
+    public void setText_authors(String text_authors) {
+        this.text_authors = text_authors;
     }
 }
