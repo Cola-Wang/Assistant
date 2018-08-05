@@ -14,6 +14,7 @@ import com.miki.assistant.R;
 import com.miki.assistant.base.BasePagerAdapter;
 import com.miki.assistant.entity.Constant;
 import com.miki.assistant.model.SelectModel;
+import com.miki.assistant.utils.GlideUtils;
 import com.miki.assistant.utils.LogUtils;
 import com.miki.assistant.utils.OkHttpUtils;
 
@@ -145,6 +146,7 @@ public class SelectFragment extends Fragment {
                 tv_author.setText(model.getHp_author());
                 tv_content.setText(model.getHp_content());
                 tv_last_update_date.setText(model.getLast_update_date());
+                GlideUtils.loadImageViewCenterCrop(getActivity(), model.getHp_img_url(), iv_img);
 
                 mListPagerView.add(view);
 

@@ -97,7 +97,7 @@ public class HomeFragment extends Fragment implements BottomNavigationView.OnNav
             ft.add(R.id.home_content_layout, movieFragment);
         }
         hideAllFragment(ft);
-        ft.show(selectFragment);
+        ft.show(movieFragment);
         ft.commit();
     }
 
