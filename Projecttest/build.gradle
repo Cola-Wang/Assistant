@@ -26,4 +26,6 @@ dependencies {
     compile 'io.reactivex.rxjava2:rxjava:2.0.0'
     //RxPermission
     compile 'com.tbruyelle.rxpermissions2:rxpermissions:0.9.4@aar'
+    //OkHttp
+    compile 'com.squareup.okhttp3:okhttp:3.8.1'
 }

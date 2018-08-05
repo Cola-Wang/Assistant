@@ -9,6 +9,7 @@ import android.widget.ListView;
 
 import com.miki.projecttest.base.BasePermissionActivity;
 import com.miki.projecttest.ui.FragmentTestActivity;
+import com.miki.projecttest.ui.OkHttpActivity;
 import com.miki.projecttest.ui.PermissionActivity;
 
 /**
@@ -19,7 +20,7 @@ public class MainActivity extends BasePermissionActivity implements AdapterView.
 
     public static final String TAG = "wangzh";
 
-    private String[] mStr = {"运行时权限", "Fragment"};
+    private String[] mStr = {"运行时权限", "Fragment", "OkHttp"};
     private ArrayAdapter<String> mArrayAdapter;
     private ListView mListView;
 
@@ -46,6 +47,9 @@ public class MainActivity extends BasePermissionActivity implements AdapterView.
                 break;
             case 1:
                 startActivity(new Intent(this, FragmentTestActivity.class));
+                break;
+            case 2:
+                startActivity(new Intent(this, OkHttpActivity.class));
                 break;
         }
     }
