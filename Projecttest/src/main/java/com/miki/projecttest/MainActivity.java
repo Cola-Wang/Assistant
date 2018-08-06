@@ -11,6 +11,7 @@ import com.miki.projecttest.base.BasePermissionActivity;
 import com.miki.projecttest.ui.FragmentTestActivity;
 import com.miki.projecttest.ui.OkHttpActivity;
 import com.miki.projecttest.ui.PermissionActivity;
+import com.miki.projecttest.ui.RetrofitActivity;
 
 /**
  * 工程测试用例
@@ -20,7 +21,7 @@ public class MainActivity extends BasePermissionActivity implements AdapterView.
 
     public static final String TAG = "wangzh";
 
-    private String[] mStr = {"运行时权限", "Fragment", "OkHttp"};
+    private String[] mStr = {"运行时权限", "Fragment", "OkHttp", "Retrofit"};
     private ArrayAdapter<String> mArrayAdapter;
     private ListView mListView;
 
@@ -50,6 +51,9 @@ public class MainActivity extends BasePermissionActivity implements AdapterView.
                 break;
             case 2:
                 startActivity(new Intent(this, OkHttpActivity.class));
+                break;
+            case 3:
+                startActivity(new Intent(this, RetrofitActivity.class));
                 break;
         }
     }

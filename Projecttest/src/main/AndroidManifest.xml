@@ -29,6 +29,9 @@
         <activity
             android:name=".ui.OkHttpActivity"
             android:label="OkHttp" />
+        <activity
+            android:name=".ui.RetrofitActivity"
+            android:label="Retrofit" />
     </application>
 
 </manifest>
