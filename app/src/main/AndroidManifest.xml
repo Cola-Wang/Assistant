@@ -35,6 +35,8 @@
             android:theme="@android:style/Theme.Light.NoTitleBar.Fullscreen" />
         <!--浏览器-->
         <activity android:name=".ui.WebViewActivity" />
+        <!--音乐详情-->
+        <activity android:name=".ui.MusicMoreActivity" />
     </application>
 
 </manifest>
