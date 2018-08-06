@@ -17,4 +17,6 @@ public class Constant {
     public static final String HTTP_MUSIC_LIST = "http://v3.wufazhuce.com:8000/api/music/idlist/0";
     //歌曲详情
     public static final String HTTP_MUSIC_MORE = "http://v3.wufazhuce.com:8000/api/music/detail/";
+    //
+    public static final String HTTP_MOVIE_LIST = "http://v3.wufazhuce.com:8000/api/channel/movie/more/0?channel=wdj&version=4.0.2&uuid=ffffffff-a90e-706a-63f7-ccf973aae5ee&platform=android";
 }

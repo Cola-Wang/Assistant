@@ -37,6 +37,8 @@
         <activity android:name=".ui.WebViewActivity" />
         <!--音乐详情-->
         <activity android:name=".ui.MusicMoreActivity" />
+        <!--电影详情-->
+        <activity android:name=".ui.MovieMoreActivity" />
     </application>
 
 </manifest>
