@@ -1,59 +1,93 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:id="@+id/mScrollView">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="180dp"
-        android:background="@color/colorPrimary"
-        android:gravity="center"
+        android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/profile_image"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@mipmap/ic_launcher"
-            app:civ_border_color="@android:color/white"
-            app:civ_border_width="1dp" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:background="@color/colorPrimary"
+            android:gravity="center"
+            android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/tv_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:text="Cola"
-            android:textColor="@android:color/white"
-            android:textSize="14sp" />
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/profile_image"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/ic_launcher"
+                app:civ_border_color="@android:color/white"
+                app:civ_border_width="1dp" />
 
-        <TextView
-            android:id="@+id/tv_content"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="未必会来，未必会走"
-            android:textColor="@android:color/white"
-            android:textSize="14sp" />
+            <TextView
+                android:id="@+id/tv_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="Cola"
+                android:textColor="@android:color/white"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/tv_content"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="未必会来，未必会走"
+                android:textColor="@android:color/white"
+                android:textSize="14sp" />
+
+        </LinearLayout>
+
+        <!--天气-->
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_margin="5dp"
+            android:background="@android:color/white">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_city"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="City"
+                    android:textSize="28sp" />
+
+                <TextView
+                    android:id="@+id/tv_cond_txt_tmp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="多云  |  23度" />
+
+                <TextView
+                    android:id="@+id/tv_wind_dir_sc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="东北风  |  3-4" />
+
+            </LinearLayout>
+
+
+        </android.support.v7.widget.CardView>
+
+        <!--生活指数-->
+        <com.miki.assistant.view.AutoMeasureRecyclerView
+            android:id="@+id/mLifeStyleRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
     </LinearLayout>
 
-    <!--天气-->
-    <android.support.v7.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:layout_margin="5dp"
-        android:background="@android:color/white">
-
-
-    </android.support.v7.widget.CardView>
-
-    <!--生活指数-->
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/mRecyclerView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
-</LinearLayout>
+</ScrollView>
