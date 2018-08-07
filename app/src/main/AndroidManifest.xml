@@ -39,6 +39,8 @@
         <activity android:name=".ui.MusicMoreActivity" />
         <!--电影详情-->
         <activity android:name=".ui.MovieMoreActivity" />
+        <!--应用详情-->
+        <activity android:name=".ui.AppInfoActivity" />
     </application>
 
 </manifest>
