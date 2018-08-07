@@ -25,4 +25,6 @@ public class Constant {
     public static final String WEATHER_BASE_URL = "https://free-api.heweather.com";
     //默认城市
     public static final String WEATHER_CITY = "成都";
+    //壁纸接口
+    public static final String WALLPAPER_URL = "http://open.lovebizhi.com/baidu_rom.php?width=720&height=1280&type=1";
 }
